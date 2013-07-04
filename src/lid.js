@@ -9,7 +9,7 @@
 	function _do() {
 		var lid = {
 			_count: 0,
-			_hash: {}
+			_hash: {},
 			_lastKey: null,
 
 			gen: function(seed) {
