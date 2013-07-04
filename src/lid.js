@@ -33,6 +33,7 @@
 					if(key === true) {
 						id = lid.gen(seed);
 						_key = lid._genKey();
+						
 						lid._register(_key, id);
 
 					} else {
@@ -41,6 +42,8 @@
 
 					}
 				} else if(typeof key === 'string') {
+					_key = key;
+
 					if(key in lid._hash) {
 						id = lid._hash[key];
 					} else {
@@ -51,7 +54,7 @@
 				} else {
 					throw new Error('Boolean or String expected as link key');
 				}
-
+				
 				lid._lastKey = _key;
 
 				return id;
