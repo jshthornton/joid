@@ -13,8 +13,8 @@
 			_lastKey: null,
 
 			gen: function(seed) {
-				if(typeof seed !== 'string') seed = '_lid';
-				return seed + '_' + lid._count++;
+				if(typeof seed !== 'string') seed = '';
+				return seed + '' + lid._count++;
 			},
 
 			_genKey: function() {
@@ -54,7 +54,7 @@
 				} else {
 					throw new Error('Boolean or String expected as link key');
 				}
-				
+
 				lid._lastKey = _key;
 
 				return id;
