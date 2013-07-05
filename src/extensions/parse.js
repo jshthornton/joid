@@ -8,26 +8,27 @@
 
 	function _do(lid) {
 		var parse = lid.parse = function(tmpl, opts) {
-
-
 			if(typeof tmpl !== 'string') throw new Error('lid parsing only operates on strings');
-			lid.flush();
+			opts = opts || {};
 
-			var linkReg = /lid\(([\s\S]+?)\)/gi,
-				genReg = /gid\(([\s\S]*?)\)/gi;
+			var _opts = {},
+				_settings = parse.settings;
+
+			for (var prop in _settings) { 
+				_opts[prop] = (opts[prop] !== undefined) ? opts[prop] : _settings[prop]; 
+			}
+
+			if(_opts.preFlush === true) lid.flush();
 
 			var out = tmpl
-				.replace(genReg, function(m, code) {
+				.replace(_opts.genReg, function(m, code) {
 					return lid.gen.apply(lid, parse._getParams(code));
 				})
-				.replace(linkReg, function(m, code) {
+				.replace(_opts.linkReg, function(m, code) {
 					return lid.link.apply(lid, parse._getParams(code));
 				});
 
-
-			console.log(out);
-
-			lid.flush();
+			if(_opts.postFlush === true) lid.flush();
 
 			return out;
 		};
@@ -35,6 +36,13 @@
 		parse._getParams = function(str) {
 			var body = 'return [' + str + ']';
 			return new Function(body)();
+		};
+
+		parse.settings = {
+			preFlush: true,
+			postFlush: true,
+			linkReg: /lid\(([\s\S]+?)\)/gi,
+			genReg: /gid\(([\s\S]*?)\)/gi
 		};
 	}
 	
