@@ -121,8 +121,51 @@ Damn, so what do we do? We flush the lid. By calling `lid.flush()` all previous 
 
 ## Extensions
 
-### Parsing
+### Parse
 
+A lot of the time you do not have a logic based templating engine in your project, either due to preference or due to restrictions.
+One very popular example is mustache.js
+
+For when this situation occurs lid.js has you covered. It comes with an extension module called `parse`. This can be bundled globally or required in, regardless `parse` just adds functionality to the `lid` object and does not return anything more.
+
+#### Global
+	<script src="lid/lid.js"></script>
+	<script src="lid/extensions/parse.js"></script>
+
+#### AMD
+	require(['lid', 'lid/extensions/parse'], function(lid) { });
+
+
+So what does parse actually do? It just allows you to pass it a string (after templating engine - but before creating a document fragment) and add the links and unique ids.
+
+	lid.parse('<label for="lid("box")">My Label</label><input id="lid("box")" type="text" value="hello">')
+	// <label for="0">My Label</label><input id="0" type="text" value="hello">
+
+This can now be made into a document fragment and put into the DOM.
+
+You can still generate one time unique ids via `gid()`, and seeds are still supported.
+
+The parsing can have its settings changed.
+Default settings:
+
+	parse.settings = {
+		preFlush: true,
+		postFlush: true,
+		linkReg: /lid\(([\s\S]+?)\)/gi,
+		genReg: /gid\(([\s\S]*?)\)/gi
+	};
+
+If you edit these then it will be a constant change.
+If however you just want to change it as a one off, then you can pass in an settings object when calling `parse`.
+
+	lid.parse('<div></div>', {
+		preFlush: false
+	});
+
+- **preFlush** - automatically flush lid before parsing
+- **postFlush** - automatically flush lid after parsing
+- **linkReg** - The regex to use to detect lid.link usage
+- **genReg** - The regex to use to detect lid.gen usage
 
 ## Dependancies
 None
