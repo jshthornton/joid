@@ -168,4 +168,9 @@ If however you just want to change it as a one off, then you can pass in an sett
 - **genReg** - The regex to use to detect lid.gen usage
 
 ## Dependancies
+
 None
+
+### Development
+
+See `package.json`
