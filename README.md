@@ -9,6 +9,8 @@ lid.js supports **AMD** (no global set) and global usages.
 
 ## Usage
 
+Available via this repository or npm `npm install lid.js`.
+
 ### Referencing
 #### Global
 	<script src="lid.js"></script>
