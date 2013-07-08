@@ -9,6 +9,8 @@ lid.js supports **AMD** (no global set) and global usages.
 
 ## Usage
 
+Available via this repository or npm `npm install lid.js`.
+
 ### Referencing
 #### Global
 	<script src="lid.js"></script>
@@ -168,4 +170,9 @@ If however you just want to change it as a one off, then you can pass in an sett
 - **genReg** - The regex to use to detect lid.gen usage
 
 ## Dependancies
+
 None
+
+### Development
+
+See `package.json`
