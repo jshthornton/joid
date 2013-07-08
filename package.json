@@ -1,0 +1,26 @@
+{
+  "name": "lid.js",
+  "preferGlobal": true,
+  "version": "1.0.0",
+  "author": "JshThornton <jshthornton@gmail.com>",
+  "description": "A utility for dealing with ids in templates.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jshthornton/lid.js.git"
+  },
+  "keywords": [
+    "javascript",
+    "utility",
+    "templates"
+  ],
+  "dependencies" : {
+  },
+  "devDependencies": {
+    "grunt-cli": "0.1.x",
+    "grunt": "~0.4.1"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  }
+}
