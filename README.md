@@ -3,7 +3,7 @@ lid.js - Linking Ids
 
 *A utility for dealing with ids in templates.*
 
-The primary aim of lid is to prodive a way for developers to easily, and programmatically generate unique ids, but also retrieve that unique id again to reference it again (whether for a label[for] or as a selector).
+The primary aim of lid is to provide a way for developers to easily, and programmatically generate unique ids, but also retrieve that unique id again to reference it again (whether for a label[for] or as a selector).
 
 lid.js supports **AMD** (no global set) and global usages.
 
@@ -76,7 +76,7 @@ This is why you can also pass in a boolean value as the first parameter.
 	lid.link(true); // 0
 	lid.link(false); // 0
 
-True will start a new reference (which is anonymous), False will always return the last refernce (regardless whether it was created with a key or anonymously).
+True will start a new reference (which is anonymous), False will always return the last reference (regardless whether it was created with a key or anonymously).
 
 	lid.link('email'); // 0
 	lid.link(false); // 0
@@ -169,7 +169,7 @@ If however you just want to change it as a one off, then you can pass in an sett
 - **linkReg** - The regex to use to detect lid.link usage
 - **genReg** - The regex to use to detect lid.gen usage
 
-## Dependancies
+## Dependencies
 
 None
 
