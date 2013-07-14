@@ -1,3 +1,7 @@
+var exec = require("child_process").exec,
+    spawn = require("child_process").spawn,
+    path = require("path");
+
 module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
@@ -20,12 +24,40 @@ module.exports = function(grunt) {
 					'dist/bundles/parse/<%= pkg.name %>.min.js': ['src/lid.js', 'src/extensions/parse.js']
 				}
 			}
+		},
+
+		yuidoc: {
+			compile: {
+				name: '<%= pkg.name %>',
+				description: '<%= pkg.description %>',
+				version: '<%= pkg.version %>',
+				url: '<%= pkg.homepage %>',
+				options: {
+					paths: 'src/',
+					outdir: 'docs/'
+				}
+			}
 		}
 	});
 
 	//Loads
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
 	//Tasks
-	grunt.registerTask('default', ['uglify']);
+	//grunt.registerTask('default', ['uglify']);
+
+
+	grunt.registerTask('doc-server', 'Project documentation at http://localhost:3000', function(){
+        var libsPath = path.resolve('src'),
+            yuidocPath = path.resolve('node_modules', 'yuidocjs', 'lib', 'cli.js'),
+            args = [yuidocPath, '--server', '--outdir', 'docs', 'src'],
+            done = this.async();
+        
+        var yuidoc = spawn('node', args, { stdio: 'inherit' });
+        yuidoc.on('close', function(code){
+            grunt.log.ok('yuidoc closed');
+            done();
+        });
+    });
 };
