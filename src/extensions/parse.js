@@ -1,4 +1,6 @@
-!function(win, doc, undefined) {
+!function() {
+	var win = window,
+		doc = document;
 	/**
 	Provides string parsing functionality to lid.
 
@@ -88,4 +90,4 @@
 		};
 	}
 	
-}(window, document, void 0);
+}();

@@ -1,4 +1,7 @@
-!function(win, doc, undefined) {
+!function() {
+	var win = window,
+		doc = document;
+
 	/**
 	Provides the lid instance via amd or a global
 
@@ -143,4 +146,4 @@
 		return lid;
 	}
 	
-}(window, document, void 0);
+}();

@@ -39,16 +39,32 @@ module.exports = function(grunt) {
 			}
 		},
 
-		clean: ['docs', 'dist']
+		clean: ['docs', 'dist'],
+
+		jshint: {
+			options: {
+				eqeqeq: true,
+				eqnull: true,
+				browser: true,
+				'-W054': true, //Allow eval
+				'-W030': true, //Allow !bang starts to auto invoking functions
+				globals: {
+					require: true
+				}
+			},
+
+			all: ['Gruntfile.js', 'src/**/*.js']
+		}
 	});
 
 	//Loads
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 
 	//Tasks
-	grunt.registerTask('default', ['clean', 'yuidoc', 'uglify']);
+	grunt.registerTask('default', ['clean', 'jshint', 'yuidoc', 'uglify']);
 
 
 	grunt.registerTask('doc-server', 'Project documentation at http://localhost:3000', function(){
