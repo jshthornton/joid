@@ -1,18 +1,7 @@
 !function() {
-	var win = window,
-		doc = document;
-	/**
-	Provides string parsing functionality to lid.
+	'use strict';
 
-	@module lid
-	@submodule parse
-	*/
-	if ( typeof define === 'function' && define.amd ) {
-		define(['../lid'], _do);
-	} else {
-		_do(win.lid);
-	}
-
+	var win = window;
 
 	function _do(lid) {
 		/**
@@ -39,8 +28,10 @@
 			var _opts = {},
 				_settings = parse.settings;
 
-			for (var prop in _settings) { 
-				_opts[prop] = (opts[prop] !== undefined) ? opts[prop] : _settings[prop]; 
+			for (var prop in _settings) {
+				if (_settings.hasOwnProperty(prop)) {
+					_opts[prop] = (opts[prop] !== undefined) ? opts[prop] : _settings[prop];
+				}
 			}
 
 			if(_opts.preFlush === true) lid.flush();
@@ -89,5 +80,16 @@
 			genReg: /gid\(([\s\S]*?)\)/gi
 		};
 	}
-	
+
+	/**
+	Provides string parsing functionality to lid.
+
+	@module lid
+	@submodule parse
+	*/
+	if ( typeof define === 'function' && define.amd ) {
+		define(['../lid'], _do);
+	} else {
+		_do(win.lid);
+	}
 }();

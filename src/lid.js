@@ -1,17 +1,7 @@
 !function() {
-	var win = window,
-		doc = document;
-
-	/**
-	Provides the lid instance via amd or a global
-
-	@module lid
-	*/
-	if ( typeof define === 'function' && define.amd ) {
-		define([], _do);
-	} else {
-		win.lid = _do();
-	}
+	'use strict';
+	
+	var win = window;
 
 	function _do() {
 		/**
@@ -145,5 +135,15 @@
 
 		return lid;
 	}
-	
+
+	/**
+	Provides the lid instance via amd or a global
+
+	@module lid
+	*/
+	if ( typeof define === 'function' && define.amd ) {
+		define([], _do);
+	} else {
+		win.lid = _do();
+	}
 }();
