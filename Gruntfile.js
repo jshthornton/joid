@@ -37,15 +37,18 @@ module.exports = function(grunt) {
 					outdir: 'docs/'
 				}
 			}
-		}
+		},
+
+		clean: ['docs', 'dist']
 	});
 
 	//Loads
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-yuidoc');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	//Tasks
-	//grunt.registerTask('default', ['uglify']);
+	grunt.registerTask('default', ['clean', 'yuidoc', 'uglify']);
 
 
 	grunt.registerTask('doc-server', 'Project documentation at http://localhost:3000', function(){
