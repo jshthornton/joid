@@ -25,6 +25,7 @@ module.exports = function(grunt) {
 
 	//Loads
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
 	//Tasks
 	grunt.registerTask('default', ['uglify']);
