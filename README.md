@@ -84,7 +84,7 @@ True will start a new reference (which is anonymous), False will always return t
 	lid.link(true); // 1
 	lid.link(false); // 1
 
-	lid.link('email'); // 2
+	lid.link('name'); // 2
 	lid.link(false); // 2
 
 	lid.link(true); // 3
