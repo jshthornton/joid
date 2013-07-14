@@ -20,6 +20,19 @@ module.exports = function(grunt) {
 					'dist/bundles/parse/<%= pkg.name %>.min.js': ['src/lid.js', 'src/extensions/parse.js']
 				}
 			}
+		},
+
+		yuidoc: {
+			compile: {
+				name: '<%= pkg.name %>',
+				description: '<%= pkg.description %>',
+				version: '<%= pkg.version %>',
+				url: '<%= pkg.homepage %>',
+				options: {
+					paths: 'src/',
+					outdir: 'docs/'
+				}
+			}
 		}
 	});
 
@@ -28,5 +41,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
 	//Tasks
-	grunt.registerTask('default', ['uglify']);
+	//grunt.registerTask('default', ['uglify']);
 };
