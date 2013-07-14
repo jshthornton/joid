@@ -19,8 +19,28 @@
 		@static
 		**/
 		var lid = {
+			/**
+			The internal count to provide a unique number for the ids.
+
+			@property _count
+			@private
+			*/
 			_count: 0,
+
+			/**
+			The registry of key value pairs to allow for generated ids to be retrieved again.
+
+			@property _hash
+			@private
+			*/
 			_hash: {},
+
+			/**
+			The last key which was used in `link`. If this key is anonymous then this will hold the generated key see `_genKey`.
+
+			@property _lastKey
+			@private
+			*/
 			_lastKey: null,
 
 			/**
